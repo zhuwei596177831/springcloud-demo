@@ -16,6 +16,9 @@ eureka:
     healthcheck:
       enabled: false
     fetch-registry: true
-    register-with-eureka: true
+    register-with-eureka: false
     service-url:
       defaultZone: http://zhuweiwei1:zhuweiwei1@server2:8762/eureka/
+  server:
+    #关闭自我保护机制
+    enable-self-preservation: false

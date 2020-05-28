@@ -21,6 +21,7 @@ public class DeptInfoProviderController {
 
     @GetMapping("/list")
     public List<DeptInfo> list() {
+        System.out.println("list...........");
         return deptInfoService.list();
     }
 

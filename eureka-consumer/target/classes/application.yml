@@ -1,3 +1,30 @@
+yml-test:
+  flag: true
+  arr: [1,2,3]
+  arr1:
+    - 4
+    - 5
+    - 6
+  test-date: 2020/05/28 15:23:22
+  yml-test:
+    id: 1
+    name: zww
+  test-list:
+    - aaa
+    - bbb
+  test-list1: [ccc,ddd]
+  yml-test-list:
+    - {id: 2,name: zzz}
+    - {id: 3,name: sss}
+  object-map:
+    key1: value1
+    key2: value2
+  object-map1: {kkk1: vvv1,kkk2: vvv2}
+  map-list:
+    - key3: value3
+      key4: value4
+    - key5: value5
+      key6: value6
 server:
   port: 8003
 spring:
@@ -12,3 +39,9 @@ eureka:
     prefer-ip-address: true
     instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}:V1.0
 #      defaultZone: http://127.0.0.1:8761/eureka/
+ribbon:
+  #开启ribbon饥饿加载
+  eager-load:
+    enabled: true
+    clients:
+      - eureka-provider

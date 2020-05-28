@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.netflix.ribbon.RibbonLoadBalancerClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,7 +58,6 @@ public class DeptInfoConsumerController {
     public List<DeptInfo> list() {
 //        ServiceInstance serviceInstance = discoveryClient.getInstances("eureka-provider").stream().findFirst().get();
 //        List<DeptInfo> data = restTemplate.getForObject("http://" + serviceInstance.getServiceId() + "/deptInfoProvider/list", List.class);
-
         InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("eureka-provider", true);
 //        logger.info(instanceInfo.getInstanceId());//192.168.1.117:eureka-provider:8002:V1.0
 //        logger.info(instanceInfo.getHomePageUrl());//http://192.168.1.117:8002/
