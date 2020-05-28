@@ -65,7 +65,7 @@ public class DeptInfoConsumerController {
 //        logger.info(instanceInfo.getIPAddr());//192.168.1.117
 //        logger.info(instanceInfo.getHostName());//192.168.1.117
 //        logger.info(instanceInfo.getAppName());//EUREKA-PROVIDER
-        List<DeptInfo> data = restTemplate.getForObject("http://" + instanceInfo.getAppName() + "/deptInfoProvider/list", List.class);
+        List<DeptInfo> data = restTemplate.getForObject("http://" + instanceInfo.getAppName() + "/eurekaProvider/deptInfoProvider/list", List.class);
         return data;
     }
 

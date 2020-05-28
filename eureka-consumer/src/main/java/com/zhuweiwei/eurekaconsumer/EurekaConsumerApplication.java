@@ -3,7 +3,9 @@ package com.zhuweiwei.eurekaconsumer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhuweiwei.eurekaconsumer.annotation.RibbonAnnotation;
-import com.zhuweiwei.eurekaconsumer.config.RibbonProviderAnnotationConfig;
+import com.zhuweiwei.eurekaconsumer.config.RandomRuleConfig;
+import com.zhuweiwei.eurekaconsumer.config.RoundRobinConfig;
+import com.zhuweiwei.eurekaconsumer.config.WeightedResponseTimeRuleConfig;
 import com.zhuweiwei.eurekaconsumer.config.YmlTestConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,11 +21,10 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-@RibbonClients({
-        @RibbonClient(name = "eureka-provider", configuration = {RibbonProviderAnnotationConfig.class})
-})
-@ComponentScan(basePackages = {"com.zhuweiwei"}, excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, value = {RibbonAnnotation.class})
+@RibbonClients(value = {
+//        @RibbonClient(name = "eureka-provider", configuration = {RoundRobinConfig.class})
+        @RibbonClient(name = "eureka-provider", configuration = {RandomRuleConfig.class})
+//        @RibbonClient(name = "eureka-provider", configuration = {WeightedResponseTimeRuleConfig.class})
 })
 public class EurekaConsumerApplication {
 

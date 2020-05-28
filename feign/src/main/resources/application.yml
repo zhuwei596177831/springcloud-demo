@@ -1,0 +1,15 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: feign-test
+eureka:
+  client:
+    service-url:
+      defaultZone: http://zhuweiwei:zhuweiwei@server1:8761/eureka/
+  instance:
+    instance-id: 192.168.1.117:${server.port}:${spring.application.name}:@springcloud.demo.project.version@
+    prefer-ip-address: true
+ribbon:
+  eager-load:
+    enabled: true
