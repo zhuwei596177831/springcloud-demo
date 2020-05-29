@@ -26,7 +26,7 @@ yml-test:
     - key5: value5
       key6: value6
 server:
-  port: 8003
+  port: 8002
 spring:
   application:
     name: eureka-consumer
