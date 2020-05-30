@@ -1,15 +1,25 @@
 server:
   port: 8003
+  servlet:
+    context-path: /eurekaFeign
 spring:
   application:
-    name: feign-test
+    name: eureka-feign
 eureka:
   client:
     service-url:
       defaultZone: http://zhuweiwei:zhuweiwei@server1:8761/eureka/
   instance:
-    instance-id: 192.168.1.117:${server.port}:${spring.application.name}:@springcloud.demo.project.version@
+    ip-address: 127.0.0.1
+    instance-id: ${eureka.instance.ip-address}:${server.port}:${spring.application.name}:@springcloud.demo.project.version@
     prefer-ip-address: true
+#当前服务介绍信息
+info:
+  groupId: @groupId@
+  artifactId: @artifactId@
+  version: @version@
+  name: @name@
+  description: @description@
 ribbon:
   eager-load:
     enabled: true

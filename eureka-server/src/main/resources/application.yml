@@ -9,16 +9,10 @@ spring:
       password: zhuweiwei
       roles: SERVICE_NODE
 eureka:
-  instance:
-    hostname: server1
-    instance-id: ${eureka.instance.hostname}:${server.port}:@springcloud.demo.project.version@
   client:
-    healthcheck:
-      enabled: false
-    fetch-registry: false
-    register-with-eureka: false
+    fetch-registry: false # 作为注册中心只维护其它微服务节点实例，不去检索服务
+    register-with-eureka: false #自己不向注册中心注册
     service-url:
       defaultZone: http://zhuweiwei1:zhuweiwei1@server2:8762/eureka/
-  server:
-    #关闭自我保护机制
-    enable-self-preservation: false
+  instance:
+    hostname: server1
