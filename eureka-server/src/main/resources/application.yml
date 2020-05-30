@@ -9,6 +9,9 @@ spring:
       password: zhuweiwei
       roles: SERVICE_NODE
 eureka:
+  #关闭自我保护机制
+  #  server:
+  #    enable-self-preservation: false
   client:
     fetch-registry: false # 作为注册中心只维护其它微服务节点实例，不去检索服务
     register-with-eureka: false #自己不向注册中心注册
