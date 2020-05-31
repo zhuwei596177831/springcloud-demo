@@ -1,6 +1,6 @@
 package com.zhuweiwei.feign.configuration;
 
-import com.zhuweiwei.feign.irule.config.WeightedResponseTimeRuleConfig;
+import com.zhuweiwei.irule.RandomRuleConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 
@@ -10,8 +10,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClients;
  * @description
  **/
 @RibbonClients({
-//        @RibbonClient(value = "eureka-provider", configuration = RandomRuleConfig.class),
-        @RibbonClient(value = "eureka-provider", configuration = WeightedResponseTimeRuleConfig.class)
+        @RibbonClient(value = "EUREKA-PROVIDER", configuration = RandomRuleConfig.class),
 })
 public class RibbonClientConfiguration {
 }

@@ -1,4 +1,4 @@
-package com.zhuweiwei.eurekaconsumer.configuration;
+package com.zhuweiwei.eurekaconsumer.component;
 
 import com.zhuweiwei.eurekaconsumer.entity.YmlTest;
 import org.springframework.boot.context.properties.ConfigurationProperties;

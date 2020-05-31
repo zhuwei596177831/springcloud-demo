@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2020-05-28 16:49
  * @description
  */
-@FeignClient(name = "eureka-provider")
+@FeignClient(name = "EUREKA-PROVIDER")
 public interface DeptClient {
 
     @GetMapping("/eurekaProvider/deptInfoProvider/list")

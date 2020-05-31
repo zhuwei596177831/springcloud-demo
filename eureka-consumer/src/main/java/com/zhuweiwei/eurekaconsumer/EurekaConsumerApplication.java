@@ -2,7 +2,7 @@ package com.zhuweiwei.eurekaconsumer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zhuweiwei.eurekaconsumer.configuration.YmlTestConfig;
+import com.zhuweiwei.eurekaconsumer.component.YmlTestConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;

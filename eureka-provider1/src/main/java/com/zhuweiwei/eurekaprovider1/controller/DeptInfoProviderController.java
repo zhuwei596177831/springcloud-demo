@@ -1,6 +1,6 @@
-package com.zhuweiwei.eureka.eurekaprovider.controller;
+package com.zhuweiwei.eurekaprovider1.controller;
 
-import com.zhuweiwei.eureka.eurekaprovider.service.DeptInfoService;
+import com.zhuweiwei.eurekaprovider1.service.DeptInfoService;
 import com.zhuweiwei.springcloud.entity.DeptInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
