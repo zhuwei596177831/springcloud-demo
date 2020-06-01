@@ -1,6 +1,6 @@
 package com.zhuweiwei.feign.controller;
 
-import com.zhuweiwei.feign.client.DeptClient;
+import com.zhuweiwei.springcloud.feignclient.DeptClient;
 import com.zhuweiwei.springcloud.entity.DeptInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

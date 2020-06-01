@@ -1,4 +1,4 @@
-package com.zhuweiwei.feign.client;
+package com.zhuweiwei.springcloud.feignclient;
 
 import com.zhuweiwei.springcloud.entity.DeptInfo;
 import org.springframework.cloud.openfeign.FeignClient;
