@@ -1,6 +1,6 @@
 package com.zhuweiwei.eurekaconsumer.configuration;
 
-import com.zhuweiwei.irule.RandomRuleConfig;
+import irule.RandomRuleConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 

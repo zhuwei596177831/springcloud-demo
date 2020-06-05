@@ -1,4 +1,4 @@
-package com.zhuweiwei.irule;
+package irule;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.WeightedResponseTimeRule;

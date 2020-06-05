@@ -23,3 +23,7 @@ info:
 ribbon:
   eager-load:
     enabled: true
+feign:
+  hystrix:
+    # feign熔断器开关
+    enabled: true
