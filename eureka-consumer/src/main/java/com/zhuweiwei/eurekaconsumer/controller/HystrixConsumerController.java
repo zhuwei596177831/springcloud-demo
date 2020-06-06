@@ -1,6 +1,5 @@
 package com.zhuweiwei.eurekaconsumer.controller;
 
-import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -8,6 +7,7 @@ import com.zhuweiwei.springcloud.entity.DeptInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,10 +33,15 @@ public class HystrixConsumerController {
     @Autowired
     RestTemplate restTemplate;
     @Autowired
+    @Qualifier(value = "eurekaClient")
     EurekaClient eurekaClient;
     @Autowired
     DiscoveryClient discoveryClient;
 
+    /**
+     * 服务降级
+     * @return
+     */
     @GetMapping("/list")
     @SuppressWarnings(value = "unchecked")
     @HystrixCommand(fallbackMethod = "deptFallbackMethod",
@@ -55,8 +60,13 @@ public class HystrixConsumerController {
     }
 
     private List<DeptInfo> deptFallbackMethod() {
-        logger.info("。。。。。。。");
-        return new ArrayList<>();
+        DeptInfo deptInfo = new DeptInfo();
+        deptInfo.setId("651531321");
+        deptInfo.setDeptName("服务被降级");
+        deptInfo.setEmail("11111111@qq.com");
+        List<DeptInfo> list = new ArrayList<>();
+        list.add(deptInfo);
+        return list;
     }
 
 }

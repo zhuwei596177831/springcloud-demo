@@ -16,7 +16,12 @@ import java.util.List;
 public class DeptClientCallBack implements DeptClient {
     @Override
     public List<DeptInfo> getDeptList() {
-        System.out.println(".........");
-        return new ArrayList<>();
+        DeptInfo deptInfo = new DeptInfo();
+        deptInfo.setId("651531321");
+        deptInfo.setDeptName("服务被降级");
+        deptInfo.setEmail("11111111@qq.com");
+        List<DeptInfo> list = new ArrayList<>();
+        list.add(deptInfo);
+        return list;
     }
 }
