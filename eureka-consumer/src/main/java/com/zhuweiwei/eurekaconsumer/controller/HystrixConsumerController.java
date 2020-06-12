@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author zww
@@ -40,6 +41,7 @@ public class HystrixConsumerController {
 
     /**
      * 服务降级
+     *
      * @return
      */
     @GetMapping("/list")
@@ -54,6 +56,7 @@ public class HystrixConsumerController {
     public List<DeptInfo> list() {
         List<ServiceInstance> instanceList = discoveryClient.getInstances("eureka-provider");
         Random random = new Random();
+        int i = ThreadLocalRandom.current().nextInt(instanceList.size());
         ServiceInstance serviceInstance = instanceList.get(random.nextInt(instanceList.size()));
         String serviceId = serviceInstance.getServiceId();
         return restTemplate.getForObject("http://" + serviceId + "/eurekaProvider/deptInfoProvider/list", List.class);
