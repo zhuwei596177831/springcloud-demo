@@ -1,11 +1,12 @@
 package com.zhuweiwei.feign.controller;
 
-import com.zhuweiwei.springcloud.feignclient.DeptClient;
 import com.zhuweiwei.springcloud.entity.DeptInfo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zhuweiwei.springcloud.feignclient.DeptClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 @RequestMapping("/feign")
 public class FeignController {
 
-    @Autowired
+    @Resource
     DeptClient deptClient;
 
     @GetMapping("/list")

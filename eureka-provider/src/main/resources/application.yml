@@ -4,7 +4,7 @@ server:
     context-path: /eurekaProvider
 spring:
   application:
-    name: EUREKA-PROVIDER
+    name: eureka-provider
   datasource:
     username: root
     password: manager
@@ -25,7 +25,7 @@ mybatis-plus:
 eureka:
   client:
     service-url:
-      defaultZone: http://zhuweiwei:zhuweiwei@server1:8761/eureka/
+      defaultZone: http://zhuweiwei:zhuweiwei@server1:8761/eureka
   instance:
     ip-address: 127.0.0.1
     prefer-ip-address: true #当前服务信息访问路径显示ip

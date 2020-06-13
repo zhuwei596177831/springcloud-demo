@@ -13,6 +13,6 @@ eureka:
     fetch-registry: false
     register-with-eureka: false
     service-url:
-      defaultZone: http://zhuweiwei:zhuweiwei@server1:8761/eureka/
+      defaultZone: http://zhuweiwei:zhuweiwei@server1:8761/eureka
   instance:
     hostname: server2

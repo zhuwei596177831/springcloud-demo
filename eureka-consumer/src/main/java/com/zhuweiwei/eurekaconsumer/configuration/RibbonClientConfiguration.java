@@ -10,7 +10,11 @@ import org.springframework.cloud.netflix.ribbon.RibbonClients;
  * @description
  **/
 @RibbonClients({
-        @RibbonClient(name = "EUREKA-PROVIDER", configuration = {RandomRuleConfig.class})
+        /**
+         * name：ribbon client's name
+         * restTemplate调用时serviceId与此name保持一致 指定的负载均衡策略才会生效
+         */
+        @RibbonClient(name = "eureka-provider", configuration = {RandomRuleConfig.class})
 })
 public class RibbonClientConfiguration {
 }

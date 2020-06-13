@@ -17,6 +17,7 @@
         <module>eureka-provider1</module>
         <module>eureka-consumer</module>
         <module>feign</module>
+        <module>zuul-gateway</module>
     </modules>
 
     <groupId>com.zhuweiwei.springcloud</groupId>

@@ -16,6 +16,6 @@ eureka:
     fetch-registry: false # 作为注册中心只维护其它微服务节点实例，不去检索服务
     register-with-eureka: false #自己不向注册中心注册
     service-url:
-      defaultZone: http://zhuweiwei1:zhuweiwei1@server2:8762/eureka/
+      defaultZone: http://zhuweiwei1:zhuweiwei1@server2:8762/eureka
   instance:
     hostname: server1

@@ -1,0 +1,29 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: zuul-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://zhuweiwei1:zhuweiwei1@server2:8762/eureka
+  instance:
+    ip-address: 127.0.0.1
+    instance-id: ${eureka.instance.ip-address}:${server.port}:${spring.application.name}:@springcloud.demo.project.version@
+    prefer-ip-address: true
+zuul:
+  routes:
+    #    eureka-provider: /deptInfo/**
+    eureka-provider-route:
+      serviceId: eureka-provider
+      path: /deptInfo/**
+  #\u7981\u6B62\u5728zuul\u7F51\u5173\u5904\u76F4\u63A5\u5BF9\u670D\u52A1\u540D\u7684\u8C03\u7528
+  ignored-services:
+    - eureka-provider
+info:
+  groupId: @groupId@
+  artifactId: @artifactId@
+  version: @version@
+  name: @name@
+  description: @description@
+

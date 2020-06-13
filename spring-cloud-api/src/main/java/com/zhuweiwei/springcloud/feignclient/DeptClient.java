@@ -12,7 +12,7 @@ import java.util.List;
  * @date 2020-05-28 16:49
  * @description
  */
-@FeignClient(name = "EUREKA-PROVIDER", fallback = DeptClientCallBack.class)
+@FeignClient(name = "eureka-provider", fallback = DeptClientCallBack.class)
 public interface DeptClient {
 
     @GetMapping("/eurekaProvider/deptInfoProvider/list")

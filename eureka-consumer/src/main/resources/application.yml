@@ -57,7 +57,7 @@ mybatis-plus:
 eureka:
   client:
     service-url:
-      defaultZone: http://zhuweiwei1:zhuweiwei1@server2:8762/eureka/
+      defaultZone: http://zhuweiwei1:zhuweiwei1@server2:8762/eureka
   instance:
     ip-address: 127.0.0.1
     prefer-ip-address: true

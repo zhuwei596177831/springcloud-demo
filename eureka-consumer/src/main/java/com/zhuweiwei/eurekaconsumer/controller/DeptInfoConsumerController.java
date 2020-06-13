@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author zww
@@ -36,14 +37,17 @@ public class DeptInfoConsumerController {
 
     @GetMapping("/test")
     public String test() {
-        discoveryClient.getInstances("EUREKA-PROVIDER").stream().forEach(
+        /**
+         * eureka-provider EUREKA-PROVIDER都可以
+         */
+        discoveryClient.getInstances("eureka-provider").stream().forEach(
                 instance -> {
-                    logger.info(instance.getHost());//192.168.1.117
-                    logger.info(instance.getInstanceId());//192.168.1.117:eureka-provider:8002:V1.0
+                    logger.info(instance.getHost());//127.0.0.1
+                    logger.info(instance.getInstanceId());//127.0.0.1:8001:eureka-provider:V1.0 127.0.0.1:8002:eureka-provider:V1.0
                     logger.info(instance.getScheme());//http
                     logger.info(instance.getServiceId());//EUREKA-PROVIDER
-                    logger.info(String.valueOf(instance.getPort()));//8002
-                    logger.info(instance.getUri().toString());//http://192.168.1.117:8002
+                    logger.info(String.valueOf(instance.getPort()));//8001 8002
+                    logger.info(instance.getUri().toString());// http://127.0.0.1:8001 http://127.0.0.1:8002
                     String response = restTemplate.getForEntity("http://" + instance.getServiceId() + "/eurekaProvider/deptInfoProvider/list", String.class).getBody();
 //                    String response = restTemplate.getForEntity("http://127.0.0.1:8002/deptInfoProvider/list", String.class).getBody();
                     logger.info("响应内容：{}", response);
@@ -55,16 +59,33 @@ public class DeptInfoConsumerController {
     @GetMapping("/list")
     @SuppressWarnings(value = "unchecked")
     public List<DeptInfo> list() {
-//        ServiceInstance serviceInstance = discoveryClient.getInstances("eureka-provider").stream().findFirst().get();
-//        List<DeptInfo> data = restTemplate.getForObject("http://" + serviceInstance.getServiceId() + "/deptInfoProvider/list", List.class);
-        InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("EUREKA-PROVIDER", true);
-//        logger.info(instanceInfo.getInstanceId());//192.168.1.117:eureka-provider:8002:V1.0
-//        logger.info(instanceInfo.getHomePageUrl());//http://192.168.1.117:8002/
-//        logger.info(instanceInfo.getId());//192.168.1.117:eureka-provider:8002:V1.0
-//        logger.info(instanceInfo.getIPAddr());//192.168.1.117
-//        logger.info(instanceInfo.getHostName());//192.168.1.117
-//        logger.info(instanceInfo.getAppName());//EUREKA-PROVIDER
+        /**
+         * eureka-provider EUREKA-PROVIDER都可以
+         */
+        List<InstanceInfo> instances = eurekaClient.getInstancesByVipAddress("EUREKA-PROVIDER", false);
+        instances.forEach(i -> {
+            System.out.println(i.getAppName());//EUREKA-PROVIDER
+            System.out.println(i.getId());//127.0.0.1:8001:eureka-provider:V1.0
+            System.out.println(i.getInstanceId());//127.0.0.1:8001:eureka-provider:V1.0
+            System.out.println(i.getPort());//8001
+            System.out.println(i.getHostName());//127.0.0.1
+        });
+        int i = ThreadLocalRandom.current().nextInt(instances.size());
+        logger.info("随机数：{}", i);
+        InstanceInfo instanceInfo = instances.get(i);
         List<DeptInfo> data = restTemplate.getForObject("http://" + instanceInfo.getAppName() + "/eurekaProvider/deptInfoProvider/list", List.class);
+        return data;
+    }
+
+    /**
+     * 负载均衡策略测试
+     *
+     * @return
+     */
+    @GetMapping("/ribbonTest")
+    @SuppressWarnings(value = "unchecked")
+    public List<DeptInfo> ribbonTest() {
+        List<DeptInfo> data = restTemplate.getForObject("http://eureka-provider/eurekaProvider/deptInfoProvider/list", List.class);
         return data;
     }
 
