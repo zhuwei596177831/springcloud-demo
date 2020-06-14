@@ -20,6 +20,10 @@ zuul:
   #\u7981\u6B62\u5728zuul\u7F51\u5173\u5904\u76F4\u63A5\u5BF9\u670D\u52A1\u540D\u7684\u8C03\u7528
   ignored-services:
     - eureka-provider
+  #\u8BF7\u6C42\u524D\u7F00
+  prefix: /api
+  #\u9ED8\u8BA4\u5F00\u542F\u72B6\u6001\uFF1Atrue
+  strip-prefix: true
 info:
   groupId: @groupId@
   artifactId: @artifactId@
