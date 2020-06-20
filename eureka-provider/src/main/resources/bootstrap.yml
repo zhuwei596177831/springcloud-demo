@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  cloud:
+    config:
+      name: eureka-provider
+      discovery:
+        enabled: true
+        service-id: spring-cloud-config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://zhuweiwei:zhuweiwei@server1:8761/eureka

@@ -1,0 +1,33 @@
+server:
+  port: 8006
+spring:
+  application:
+    name: spring-cloud-config-server
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.ip-address}:${server.port}:${spring.application.name}:@springcloud.demo.project.version@
+#\u5F53\u524D\u670D\u52A1\u4ECB\u7ECD\u4FE1\u606F
+info:
+  groupId: @groupId@
+  artifactId: @artifactId@
+  version: @version@
+  name: @name@
+  description: @description@
+---
+spring:
+  profiles: dev
+  application:
+    name: spring-cloud-config-server-dev
+api:
+  username: dev
+  password: zww
+---
+spring:
+  profiles: test
+  application:
+    name: spring-cloud-config-server-test
+api:
+  username: test
+  password: zww
