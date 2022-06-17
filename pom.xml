@@ -33,7 +33,7 @@
         <druid.version>1.1.22</druid.version>
         <lombok.version>1.18.12</lombok.version>
         <pagehelper.starter.version>1.2.13</pagehelper.starter.version>
-        <fastjson.version>1.2.68</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <dependencyManagement>
